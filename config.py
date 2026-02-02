@@ -1,3 +1,8 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 GESTURE_MAP = {
     'thumbs_up': 'yes',
     'thumbs_down': 'no',
@@ -6,8 +11,11 @@ GESTURE_MAP = {
     'pointing': 'what'
 }
 
-CONFIDENCE_THRESHOLD = 0.7
-TIMEOUT_SECONDS = 4.0
-SESSION_ID = "session_001"  # Unique identifier for this conversation session
-WEBHOOK_URL = 'https://automate.kaelvxdev.space/webhook/948df1d7-1f06-414c-a636-16bcac08ded5'
-GESTURE_COOLDOWN_SECONDS = 2.5
+CONFIDENCE_THRESHOLD = float(os.getenv('CONFIDENCE_THRESHOLD', 0.7))
+TIMEOUT_SECONDS = float(os.getenv('TIMEOUT_SECONDS', 4.0))
+SESSION_ID = os.getenv('SESSION_ID', "session_001")
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
+GESTURE_COOLDOWN_SECONDS = float(os.getenv('GESTURE_COOLDOWN_SECONDS', 2.5))
+
+if not WEBHOOK_URL:
+    print("Warning: WEBHOOK_URL not found in environment variables.")
