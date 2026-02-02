@@ -2,6 +2,8 @@
 
 A simple hobby project that detects hand gestures using MediaPipe and sends text to an LLM via webhook.
 
+> **Note:** Currently, this project only supports basic static gestures. Future implementations are planned to add full Sign Language support.
+
 ## Features
 
 - Real-time hand gesture detection using MediaPipe
